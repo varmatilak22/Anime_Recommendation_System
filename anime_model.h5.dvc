@@ -1,0 +1,5 @@
+outs:
+- md5: 1c925598c7462c3a5feaa923f2621c8b
+  size: 527403600
+  hash: md5
+  path: anime_model.h5

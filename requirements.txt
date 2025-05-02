@@ -1,0 +1,12 @@
+pandas 
+numpy
+tensorflow-cpu
+scikit-learn
+scipy
+webbrowser
+pillow
+streamlit
+streamlit_oauth
+python-dotenv
+matplotlib
+seaborn
