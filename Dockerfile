@@ -1,18 +1,27 @@
-# Use the official Streamlit image as the base image
+# Use Python base image
 FROM python:3.11-slim
 
-# Set the working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy requirements.txt and install dependencies
-COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r requirements.txt
+# Install OS packages
+RUN apt-get update && apt-get install -y git gcc g++ curl && rm -rf /var/lib/apt/lists/*
 
-# Copy the rest of your app's code into the container
-COPY . /app
+# Copy requirements and install Python packages
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# Expose the port Streamlit will run on
+# Install DVC with GCS support
+RUN pip install dvc[gcs]
+
+# Copy project files
+COPY . .
+
+# Initialize DVC (if needed inside container)
+RUN dvc init --no-scm && dvc config core.no_scm true
+
+# Expose Streamlit port
 EXPOSE 8501
 
-# Command to run Streamlit when the container starts
-CMD ["streamlit", "run","main.py"]
+# Entrypoint script
+ENTRYPOINT ["python", "entrypoint.py"]
