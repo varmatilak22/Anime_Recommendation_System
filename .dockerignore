@@ -1,0 +1,32 @@
+# Ignore virtual environments
+myenv/
+
+# Ignore data files and model weights (handled by DVC or external storage)
+data/
+preprocess_data/
+anime_model.h5
+
+# DVC folders that should not be in Docker
+.dvc/
+.dvc/cache/
+.dvc/tmp/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.so
+
+# IDE files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+
+# Git and version control
+.git/
+.gitignore
+
+# Environment/config files
+pages/.env
+*.env

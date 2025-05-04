@@ -6,6 +6,8 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
+print(os.getenv("CLIENT_ID"))
+print(os.getenv("CLIENT_SECRET"))
 
 # ─── Configuration ───────────────────────────────────────────────
 CLIENT_ID=os.getenv("CLIENT_ID")
